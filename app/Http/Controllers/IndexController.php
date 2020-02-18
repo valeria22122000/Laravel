@@ -13,5 +13,7 @@ class IndexController extends Controller
     	$articles=Article::all();
     return view('welcome')->with(['a'=>$a,'b'=>$b,'articles'=>$articles]); 
     }
-
+public function pag2(){
+	return view('pag2');
+}
 }
