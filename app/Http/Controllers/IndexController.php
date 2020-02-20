@@ -11,9 +11,28 @@ class IndexController extends Controller
     	$a='Salutare';
     	$b="Azi e o zi frumoasa";
     	$articles=Article::all();
-    return view('welcome')->with(['a'=>$a,'b'=>$b,'articles'=>$articles]); 
+    return view('welcome')->with([ 'message'=>$this->message,
+    	'header'=>$this->header,
+    	'articles'=>$articles
+]); 
     }
+    
 public function pag2(){
 	return view('pag2');
 }
+
+public function show($id){
+$article=Article::select(['id','title','text'])->where('id',$id)->first(); 
+return view ('article-content')->with (['message'=>$this->message, 'header'=> $this->header, 'article'=>$article]);
+
+
+}
+
+protected $message;
+protected $header; 
+public function _construct(){
+	$this->header='Hello World!!!';
+	$this->message='This is a template for a simple marketing or';
+}
+
 }
