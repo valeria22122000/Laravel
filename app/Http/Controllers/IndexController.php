@@ -30,4 +30,19 @@ $article=Article::select(['id','title','text'])->where('id',$id)->first();
 return view ('article-content')->with (['h'=>$this->h, 't'=> $this->t, 'article'=>$article]);
 
 }
+
+public function add(){
+    return view ('add-content')->with (['h'=>$this->h, 't'=> $this->t]);
+}
+
+public function store(Request $request){
+    $this->validate($request, ['title'=> 'required | max:50', 
+        'description'=> 'required | max:200', 
+        'text' => 'required']);
+    $data=$request->all();
+    $article =new Article;
+    $article->fill($data);
+    $article ->save();
+    return redirect('/');
+}
 }

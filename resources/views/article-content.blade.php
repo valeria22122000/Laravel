@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section ('content')
 
+<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" >
+    <link href="{{asset('css/jumbotron.css')}}" rel="stylesheet">
+
 <main role="main">
   
 <div class="jumbotron">
@@ -16,12 +19,12 @@
     <!-- Example row of columns -->
     <div class="row">
     @if($article)
+    <div class="col-md-6">
         <h2>{{$article->title}}</h2>
         <p>{{$article->text}} </p>
-
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+</div>
+      
        @endif
-     </div>
      
     </div>
     <hr>
